@@ -10,7 +10,7 @@ import '@aws-amplify/ui-react/styles.css';
 import awsExports from './aws-exports';
 Amplify.configure(awsExports);
 
-const initialFormState = { name : '', description : ''};
+const initialFormState = { name : ' ', description : ' ' };
 
 
 const  App = () =>  {
@@ -49,17 +49,21 @@ const  App = () =>  {
           <div className="App">
                          
               <h1> My Notes App</h1>
-              <input
-                onChange = { e => setFormData({ ...formData, name: e.target.value})}
-                placeholder="Note name"
-                value= {formData.name}
-              />
-              <input
-                onChange = { e => setFormData({ ...formData, description: e.target.value})}
-                placeholder="Note description"
-                value = {formData.description}
-              />
-              <button onClick={createNote}>Create Note</button>
+              <fieldset>
+                <input
+                  onChange = { event => setFormData({ ...formData, 'name': event.target.value})}
+                  placeholder="Note name"
+                  value= {formData.name}
+                 />
+                 <input
+                  onChange = { event => setFormData({ ...formData, 'description': event.target.value})}
+                  placeholder="Note description"
+                  value = {formData.description}
+                    />
+                  <button onClick={createNote}>Create Note</button>          
+
+              </fieldset>
+              
               <div style={{ marginBottom: 30}}>
                 {
                   notes.map(note => (
